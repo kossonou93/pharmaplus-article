@@ -1,28 +1,21 @@
-package com.pharmaplus.article.entity;
+package com.pharmaplus.article.dto;
 
 import java.math.BigDecimal;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import com.pharmaplus.article.entity.Article;
-
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
-@Document("article")
-public class Article extends AuditModel{
+@Builder
+public class ArticleDTO {
 	
-	@Id
 	private String id;
 	private String idFamille;
+	private String idPrincipeActif																																																																																																																																																																																																																																																																																																																																																																							;
 	private String idCodeGeographique;
-	private String idPrincipeActif;
 	private String designation;
 	private BigDecimal prixAchatHtEntier;
 	private BigDecimal prixAchatTtcEntier;
@@ -41,8 +34,8 @@ public class Article extends AuditModel{
 	private Integer code3;
 	private Boolean nonServiSurBon;
 	private Integer stockDernierInventaire;
-	private String idUserCrea;
-	private String idUserModif;
+	private String userCreaId;
+	private String userModifId;
 	private Boolean enable;
 	private String idArticlePrincipal;
 	private String contenanceArticlePrincipal;
@@ -64,4 +57,5 @@ public class Article extends AuditModel{
 	private Integer seuilDeSecurite;
 	private Integer seuilDeReaprovis;
 	private Integer idTaxe;
+
 }

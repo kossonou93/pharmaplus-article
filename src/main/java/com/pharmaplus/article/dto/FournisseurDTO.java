@@ -1,22 +1,16 @@
-package com.pharmaplus.article.entity;
+package com.pharmaplus.article.dto;
 
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
-@NoArgsConstructor
 @AllArgsConstructor
-@Document("fournisseur")
-public class Fournisseur extends AuditModel{
-
-	@Id
+@NoArgsConstructor
+@Builder
+public class FournisseurDTO {
+	
 	private String id;
 	private String nom;
 	private String telephone;
@@ -30,7 +24,6 @@ public class Fournisseur extends AuditModel{
 	private String codeCip;
 	private String idUserCrea;
 	private String idUserModif;
-	@Column(columnDefinition = "boolean default false")
-    private boolean enable = false;
-	
+	private Boolean enable;
+
 }

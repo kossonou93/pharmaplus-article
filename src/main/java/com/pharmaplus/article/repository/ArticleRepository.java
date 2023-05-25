@@ -9,9 +9,33 @@ import com.pharmaplus.article.entity.Article;
 
 public interface ArticleRepository extends MongoRepository<Article, String>{
 	
-	Optional<Article> findByName(String name);
+	Optional<Article> findByDesignation(String designation);
 	
-	@Query("{'price': {$regex: ?0}}")
+	Optional<Article> findByCode1(String code1);
+	
+	Optional<Article> findByCode2(String code2);
+	
+	Optional<Article> findByCode3(String code3);
+	
+	List<Article> findByIdFamille(String idFamille);
+	
+	List<Article> findByIdCodeGeographique(String idCodeGeographique);
+	
+	List<Article> findByIdPrincipeActif(String idPrincipeActif);
+	
+	@Query("{'designation': {$regex: ?0}")
+	List<Article> findByDesignationContaining(String character);
+	
+	@Query("{$or: ["
+            + "{'code1': {$regex: ?0, $options: 'i'}}, "
+            + "{'code2': {$regex: ?0, $options: 'i'}}, "
+            + "{'code3': {$regex: ?0, $options: 'i'}}"
+            + "]}")
+    List<Article> Designation(String searchTerm);
+	
+	Boolean existsByDesignation(String designation);
+	
+	/*@Query("{'price': {$regex: ?0}}")
 	List<Article> findByPrice(Double price);
 	
 	@Query("{'quantity': {$regex: ?0}}")
@@ -38,7 +62,10 @@ public interface ArticleRepository extends MongoRepository<Article, String>{
 	@Query("{ 'name' : { $regex: ?0, $options: 'i' } }")
 	List<Article> findByNameStartingWith(String prefix);
 	
-	@Query("{'name': {$regex: ?0}}")
-	List<Article> findByNameContaining(String character);
+	@Query("{'name': {$regex: ?0}")
+	List<Article> findByNameContaining(String character);*/
+	
+	@Query("{'enable': ?0}")
+	List<Article> findByEnable(Boolean enable);
 
 }
